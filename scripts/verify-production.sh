@@ -11,7 +11,7 @@ for path in / /home/ /gallery/ /directory/ /talk/ /about-us/; do
 done
 
 printf '\n== WWW ==\n'
-curl -sS -o /dev/null -w 'https://%{url_effective} -> HTTP %{http_code}\n' "https://${WWW_DOMAIN}/"
+curl -sS -o /dev/null -w '%{url_effective} -> HTTP %{http_code}\n' "https://${WWW_DOMAIN}/"
 
 printf '\n== API ==\n'
 curl -sS "https://${DOMAIN}/api/opiniones-hero"
