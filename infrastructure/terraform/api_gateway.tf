@@ -34,6 +34,18 @@ resource "aws_apigatewayv2_stage" "default" {
   api_id      = aws_apigatewayv2_api.feedback.id
   name        = "$default"
   auto_deploy = true
+
+  route_settings {
+    route_key              = aws_apigatewayv2_route.post_question.route_key
+    throttling_burst_limit = 20
+    throttling_rate_limit  = 5
+  }
+
+  route_settings {
+    route_key              = aws_apigatewayv2_route.post_hero.route_key
+    throttling_burst_limit = 20
+    throttling_rate_limit  = 5
+  }
 }
 
 resource "aws_lambda_permission" "api_gateway" {

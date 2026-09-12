@@ -56,3 +56,31 @@ The original database used extension-backed types/features. A real restore test 
 ## Privacy
 
 Participant/raw database exports contain personal information. Keep database and CSV backups encrypted, access-controlled and outside the public application repository.
+
+### PostgreSQL restore prerequisites
+
+Source PostgreSQL version: 15.19
+
+Required extensions:
+
+- vector
+- citext
+- unaccent
+- pg_trgm
+
+The backup is a PostgreSQL custom-format archive (`PGDMP`), despite its
+`.sql` filename. Restore it using `pg_restore`, not `psql`.
+
+A complete recovery test was performed on 2026-09-12 using PostgreSQL 15
+with pgvector. The restore completed with zero errors and zero warnings.
+
+Validated recovered structure:
+
+- 63 public tables
+- 65 foreign keys
+- 111 public indexes
+- 4 user-defined triggers
+
+Because the required extensions are installed into the `public` schema
+before restoration, exclude the dump's `SCHEMA - public` TOC entry during
+restore.

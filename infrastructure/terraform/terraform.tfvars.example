@@ -5,6 +5,13 @@ project_name        = "yatoca"
 domain_name         = "yatoca.pe"
 feedback_table_name = "yatoca-feedback"
 
+# Optional overrides. Defaults derive unique names from the target AWS account.
+# backup_bucket_name = "yatoca-backups-123456789012"
+
+# Optional USD 5/month budget notifications. Keep null to skip budget creation.
+# budget_email = "conectemos@yatoca.pe"
+monthly_budget_usd = 5
+
 # Phase 1: both false.
 # After ACM is ISSUED, set attach_custom_certificate=true and apply.
 # In a cross-account move, keep enable_custom_domain=false until the aliases

@@ -42,6 +42,31 @@ variable "assets_bucket_name" {
   nullable    = true
 }
 
+variable "backup_bucket_name" {
+  description = "Optional explicit globally unique recovery backup bucket name. Null derives yatoca-backups-<account-id>."
+  type        = string
+  default     = null
+  nullable    = true
+}
+
+variable "budget_email" {
+  description = "Optional email address for the USD 5/month AWS Budget alerts. Null skips budget creation."
+  type        = string
+  default     = null
+  nullable    = true
+}
+
+variable "monthly_budget_usd" {
+  description = "Monthly Yatoca AWS cost target in USD."
+  type        = number
+  default     = 5
+
+  validation {
+    condition     = var.monthly_budget_usd > 0
+    error_message = "monthly_budget_usd must be greater than zero."
+  }
+}
+
 variable "create_hosted_zone" {
   description = "Create a new Route 53 hosted zone. Use true for a new-account recovery."
   type        = bool

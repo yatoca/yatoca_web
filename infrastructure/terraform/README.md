@@ -108,3 +108,19 @@ See `../../docs/NEW_AWS_ACCOUNT_RECOVERY.md` for the full runbook.
 ## State
 
 Terraform state is not committed. For an actual production recovery, use a remote encrypted backend (for example S3 with versioning and locking) before the environment becomes long-lived.
+
+
+## Baseline de protección/costo (2026-09-12)
+
+La configuración portable reproduce las protecciones operativas aprobadas:
+
+- DynamoDB PITR: 35 días
+- DynamoDB deletion protection: habilitada
+- S3 assets: versionado habilitado
+- S3 backups: privado + versionado habilitado
+- CloudWatch Lambda: 30 días de retención
+- API Gateway POST `/api/opiniones` y `/api/opiniones-hero`: 5 req/s, burst 20
+- AWS Budget: USD 5/mes cuando `budget_email` tiene valor
+- AWS WAF: no se crea, para mantener el objetivo operativo <= USD 5/mes
+
+El budget es una alerta, no un hard cap.

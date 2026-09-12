@@ -39,6 +39,8 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref AssetsBucketName
+      VersioningConfiguration:
+        Status: Enabled
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         IgnorePublicAcls: true
@@ -52,6 +54,13 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       StageName: '$default'
+      RouteSettings:
+        'POST /api/opiniones':
+          ThrottlingBurstLimit: 20
+          ThrottlingRateLimit: 5
+        'POST /api/opiniones-hero':
+          ThrottlingBurstLimit: 20
+          ThrottlingRateLimit: 5
 
   ApiFunction:
     Type: AWS::Serverless::Function

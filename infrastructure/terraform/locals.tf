@@ -15,6 +15,11 @@ locals {
     "${var.project_name}-assets-${data.aws_caller_identity.current.account_id}"
   )
 
+  backup_bucket_name = coalesce(
+    var.backup_bucket_name,
+    "${var.project_name}-backups-${data.aws_caller_identity.current.account_id}"
+  )
+
   hosted_zone_id = var.create_hosted_zone ? aws_route53_zone.primary[0].zone_id : var.existing_hosted_zone_id
 
   # Preserve current public mail/service records exactly during account moves.

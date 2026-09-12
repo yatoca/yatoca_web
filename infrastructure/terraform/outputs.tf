@@ -10,6 +10,10 @@ output "assets_bucket_name" {
   value = aws_s3_bucket.assets.bucket
 }
 
+output "backup_bucket_name" {
+  value = aws_s3_bucket.backups.bucket
+}
+
 output "feedback_table_name" {
   value = aws_dynamodb_table.feedback.name
 }
@@ -71,4 +75,8 @@ output "codecommit_clone_url_http" {
 
 output "codecommit_clone_url_ssh" {
   value = var.enable_codecommit ? aws_codecommit_repository.source[0].clone_url_ssh : null
+}
+
+output "monthly_budget_name" {
+  value = var.budget_email == null ? null : aws_budgets_budget.monthly[0].name
 }
