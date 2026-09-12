@@ -5,7 +5,6 @@ import Wrapper from '@/components/basic/wrapper';
 import SafeArea from '@/components/basic/safe-area';
 import { LogoAmbosSVG, LogoBicentarioSVG, LogoIdeaSVG } from '@/constants/svgs';
 import about_us_principles from '@/assets/images/about_us_principles.jpg';
-import about_us_principles_mobile from '@/assets/images/about_us_principles_mobile.png';
 import Image from 'next/image';
 
 
@@ -55,7 +54,6 @@ const AboutUs: React.FC = () => {
                   <div className="about-us-principles-p1" />
                   <div className="about-us-principles-p2">
                     <Image src={about_us_principles} alt="about-us-principles-img-desktop" className="about-us-principles-img-desktop" />
-                    <Image src={about_us_principles_mobile} alt="about-us-principles-img-mobile" className="about-us-principles-img-mobile" />
                   </div>
                   <div className="about-us-principles-p3" />
                   <div className="about-us-principles-p4 textWhite">
