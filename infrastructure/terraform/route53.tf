@@ -24,7 +24,7 @@ resource "aws_route53_record" "dmarc" {
   name    = "_dmarc.${var.domain_name}"
   type    = "TXT"
   ttl     = 3600
-  records = ["\"v=DMARC1; p=quarantine; rua=mailto:postmaster@${var.domain_name}; pct=100\""]
+  records = ["v=DMARC1; p=quarantine; rua=mailto:postmaster@${var.domain_name}; pct=100"]
 }
 
 resource "aws_route53_record" "mailchimp_k2" {

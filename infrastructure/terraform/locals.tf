@@ -32,8 +32,8 @@ locals {
   ]
 
   apex_txt = [
-    "\"google-site-verification=iSQT41lsnYz-EALupDo9IJaspvaTSF7kd7wQEQm2gtk\"",
-    "\"T4409132\"",
-    "\"v=spf1 include:secureserver.net -all\"",
+    "google-site-verification=iSQT41lsnYz-EALupDo9IJaspvaTSF7kd7wQEQm2gtk",
+    "T4409132",
+    "v=spf1 include:secureserver.net -all",
   ]
 }
