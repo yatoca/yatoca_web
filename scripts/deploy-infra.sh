@@ -6,6 +6,7 @@ AWS_REGION="${AWS_REGION:-us-east-1}"
 FEEDBACK_TABLE_NAME="${FEEDBACK_TABLE_NAME:-yatoca-feedback}"
 ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 WEB_BUCKET_NAME="${WEB_BUCKET_NAME:-yatoca-web-${ACCOUNT_ID}}"
+ASSETS_BUCKET_NAME="${ASSETS_BUCKET_NAME:-yatoca-assets-${ACCOUNT_ID}}"
 DEPLOY_BUCKET_NAME="${DEPLOY_BUCKET_NAME:-yatoca-deploy-${ACCOUNT_ID}}"
 CERTIFICATE_ARN="${CERTIFICATE_ARN:-}"
 PACKAGED_TEMPLATE="$(mktemp -t yatoca-packaged.XXXXXX.yaml)"
@@ -41,6 +42,7 @@ aws cloudformation deploy \
   --no-fail-on-empty-changeset \
   --parameter-overrides \
     WebBucketName="$WEB_BUCKET_NAME" \
+    AssetsBucketName="$ASSETS_BUCKET_NAME" \
     FeedbackTableName="$FEEDBACK_TABLE_NAME" \
     CertificateArn="$CERTIFICATE_ARN"
 

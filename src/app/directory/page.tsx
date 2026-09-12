@@ -92,8 +92,8 @@ const Directory: React.FC = () => {
                                     <div className='directory-p2' />
                                 </div>
                             </SafeArea>
-                            <img src="https://ya-toca-web-imgs.nyc3.cdn.digitaloceanspaces.com/bg/bg_directory.png" alt="directory bg" className="directory-header-bg" />
-                            <img src="https://ya-toca-web-imgs.nyc3.cdn.digitaloceanspaces.com/bg/bg_directory_mobile.png" alt="directory bg mobile" className="directory-header-bg-mobile" />
+                            <img src="/media/bg/bg_directory.png" alt="directory bg" className="directory-header-bg" />
+                            <img src="/media/bg/bg_directory_mobile.png" alt="directory bg mobile" className="directory-header-bg-mobile" />
                         </div>
                         <div className="directory-footer-text">
                             <SafeArea>

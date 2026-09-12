@@ -349,7 +349,7 @@ const Talk: React.FC = () => {
                     <video
                       ref={videoRef}
                       className="c-video-desktop"
-                      src="https://ya-toca-web-imgs.nyc3.cdn.digitaloceanspaces.com/habla.mp4"
+                      src="/media/habla.mp4"
                       controls
                     />
                   </div>}
@@ -366,7 +366,7 @@ const Talk: React.FC = () => {
               <video
                 ref={videoRefMobile}
                 className="c-video-mobile"
-                src="https://ya-toca-web-imgs.nyc3.cdn.digitaloceanspaces.com/habla.mp4"
+                src="/media/habla.mp4"
                 controls
               />
             </div>}

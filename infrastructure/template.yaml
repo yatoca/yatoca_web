@@ -6,6 +6,9 @@ Parameters:
   WebBucketName:
     Type: String
     Description: Globally unique private S3 bucket used by CloudFront for the static site.
+  AssetsBucketName:
+    Type: String
+    Description: Globally unique private S3 bucket used by CloudFront for migrated media assets.
   FeedbackTableName:
     Type: String
     Default: yatoca-feedback
@@ -23,6 +26,19 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref WebBucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+
+  AssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref AssetsBucketName
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         IgnorePublicAcls: true
@@ -113,24 +129,6 @@ Resources:
           return request;
         }
 
-  ApiNoCachePolicy:
-    Type: AWS::CloudFront::CachePolicy
-    Properties:
-      CachePolicyConfig:
-        Name: !Sub ${AWS::StackName}-api-no-cache
-        DefaultTTL: 0
-        MaxTTL: 0
-        MinTTL: 0
-        ParametersInCacheKeyAndForwardedToOrigin:
-          EnableAcceptEncodingBrotli: false
-          EnableAcceptEncodingGzip: false
-          CookiesConfig:
-            CookieBehavior: none
-          HeadersConfig:
-            HeaderBehavior: none
-          QueryStringsConfig:
-            QueryStringBehavior: all
-
   Distribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -147,6 +145,11 @@ Resources:
         Origins:
           - Id: static-s3
             DomainName: !GetAtt WebBucket.RegionalDomainName
+            OriginAccessControlId: !GetAtt OriginAccessControl.Id
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+          - Id: assets-s3
+            DomainName: !GetAtt AssetsBucket.RegionalDomainName
             OriginAccessControlId: !GetAtt OriginAccessControl.Id
             S3OriginConfig:
               OriginAccessIdentity: ''
@@ -173,6 +176,18 @@ Resources:
             - EventType: viewer-request
               FunctionARN: !GetAtt StaticRewriteFunction.FunctionARN
         CacheBehaviors:
+          - PathPattern: /media/*
+            TargetOriginId: assets-s3
+            ViewerProtocolPolicy: redirect-to-https
+            Compress: true
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+            CachedMethods:
+              - GET
+              - HEAD
+            CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
           - PathPattern: /api/*
             TargetOriginId: yatoca-api
             ViewerProtocolPolicy: https-only
@@ -188,13 +203,34 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            CachePolicyId: !Ref ApiNoCachePolicy
+            # AWS managed CachingDisabled policy.
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+            # AWS managed AllViewerExceptHostHeader policy for API Gateway.
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac
         ViewerCertificate: !If
           - UseCustomDomain
           - AcmCertificateArn: !Ref CertificateArn
             SslSupportMethod: sni-only
             MinimumProtocolVersion: TLSv1.2_2021
           - CloudFrontDefaultCertificate: true
+
+  AssetsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AssetsBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipalReadOnly
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action:
+              - s3:GetObject
+            Resource: !Sub ${AssetsBucket.Arn}/*
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}
 
   WebBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -217,6 +253,8 @@ Resources:
 Outputs:
   WebBucketName:
     Value: !Ref WebBucket
+  AssetsBucketName:
+    Value: !Ref AssetsBucket
   ApiEndpoint:
     Value: !Sub https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com
   CloudFrontDistributionId:
