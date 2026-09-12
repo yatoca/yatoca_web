@@ -1,0 +1,351 @@
+.counter-desktop,
+.counter-mobile {
+    font-size: 16px;
+    color: #ABABAB;
+}
+.directory-header {
+    /* min-height: calc(100vh - 109px); */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 75px;
+    margin-bottom: 73px;
+    background-color: #5EC2D0;
+}
+
+.directory-p1 {
+    flex: 11;
+    margin-bottom: 78px;
+}
+
+.directory-p2 {
+    flex: 1;
+}
+
+.directory-text-p1 {
+    flex: 5;
+}
+
+.directory-text-p2 {
+    flex: 7;
+}
+
+.directory-header-text,
+.directory-header-text-mobile {
+    color: #2E585B;
+    letter-spacing: -2%;
+}
+
+.directory-content {
+    background-color: white;
+}
+
+.directory-search-content {
+    position: relative;
+}
+
+.directory-search-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 41px;
+    transform: translateY(-50%);
+}
+
+input.directory-search-input-desktop,
+input.directory-search-input-mobile {
+    outline: none !important;
+    background-color: transparent !important;
+}
+
+.directory-search-arrow-back,
+.directory-search-arrow-forward {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.directory-search-arrow-back:hover,
+.directory-search-arrow-forward:hover {
+    background-color: black;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.directory-content-companies {
+    background-color: white;
+    padding-bottom: 122px;
+}
+
+.directory-content-company-name {
+    font-size: 54px;
+    margin-bottom: 32px;
+    line-height: normal;
+}
+
+.directory-content-company-title {
+    margin-bottom: 32px;
+}
+
+.directory-content-company-email {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #000000;
+    height: fit-content;
+}
+
+.directory-content-company-phone {
+    font-size: 16px;
+}
+
+.directory-footer-text {
+    background-color: white;
+}
+
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .content-desktop {
+        display: none;
+    }
+
+    .counter-desktop {
+        display: none;
+    }
+
+    .directory-content-companies {
+        padding-bottom: 166px;
+    }
+
+    .directory-p1 {
+        flex: 12;
+        margin-bottom: 0;
+    }
+
+    .directory-p2 {
+        display: none;
+    }
+
+    .directory-text-p1 {
+        display: none;
+    }
+
+    .directory-text-p2 {
+        flex: 12;
+    }
+
+    .directory-header {
+        padding-top: 49px;
+        min-height: unset;
+        margin-bottom: 0;
+    }
+
+    .directory-header-bg {
+        display: none;
+    }
+
+    .directory-header-bg-mobile {
+        margin-top: 50px;
+    }
+
+    .directory-header-divider {
+        height: 57px;
+    }
+
+    .directory-header-text {
+        display: none;
+    }
+
+    .directory-header-text-mobile {
+        font-size: 36px;
+    }
+
+    .directory-content {
+        padding-top: 120px;
+        padding-bottom: 65px;
+    }
+
+    .directory-title {
+        font-size: 96px;
+        margin-bottom: 49px;
+    }
+
+    .directory-search {
+        flex-direction: column;
+    }
+
+    .directory-search-content {
+        flex: 12;
+    }
+
+    .directory-search-content-arrows-desktop {
+        display: none;
+    }
+
+    .directory-search-content-arrows-mobile {
+        flex: 12;
+    }
+
+    .directory-search-arrow-back,
+    .directory-search-arrow-forward {
+        padding: 41px 32px;
+        border: 2px solid #000000;
+        height: 104px;
+    }
+
+    .directory-search-arrow-back {
+        border-right: none;
+    }
+
+    .directory-search-input-mobile {
+        border: 2px solid #000000;
+        padding: 41px 75px;
+        padding-right: 24px;
+        height: 104px;
+        width: 100%;
+    }
+
+    .directory-search-input-desktop {
+        display: none;
+    }
+
+    .directory-search-arrow-forward,
+    .directory-search-arrow-back {
+        border-top: none;
+    }
+
+    .directory-content-company {
+        width: 100%;
+    }
+
+    .company-mobile {
+        text-align: center;
+    }
+
+    .directory-content-companies-list-desktop {
+        display: none;
+    }
+
+    .directory-footer-text {
+        padding-top: 120px;
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 768px) {
+    .content-mobile {
+        display: none;
+    }
+
+    .counter-mobile {
+        display: none;
+    }
+
+    .directory-header {
+        margin-bottom: 0;
+    }
+
+    .directory-header-bg-mobile {
+        display: none;
+    }
+
+    .directory-header-divider {
+        height: 75px;
+    }
+
+    .directory-header-text {
+        font-size: 40px;
+    }
+
+    .directory-header-text-mobile {
+        display: none;
+    }
+
+    .directory-title {
+        display: none;
+    }
+
+    .directory-content {
+        padding-top: 120px;
+        padding-bottom: 68px;
+    }
+
+    .directory-footer-text {
+        padding-top: 49px;
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .directory-search {
+        flex-direction: row;
+    }
+
+    .directory-search-content {
+        flex: 10;
+    }
+
+    .directory-search-content-arrows-desktop {
+        flex: 2;
+    }
+
+    .directory-search-content-arrows-mobile {
+        display: none;
+    }
+
+    .directory-search-arrow-back,
+    .directory-search-arrow-forward {
+        padding: 41px 32px;
+        border: 2px solid #000000;
+        height: 104px;
+        border-top: 2px solid #000000 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .directory-search-arrow-back {
+        border-right: none;
+    }
+
+    .directory-search-input-desktop {
+        border: 2px solid #000000;
+        border-right: none;
+        padding: 41px 75px;
+        height: 104px;
+        width: 100%;
+    }
+
+    .directory-search-input-mobile {
+        display: none;
+    }
+
+    .directory-footer-text-mobile {
+        display: none;
+    }
+
+    .directory-content-company {
+        max-width: 25%;
+    }
+
+    .directory-content-companies-list-mobile {
+        display: none;
+    }
+
+    .directory-search-input-desktop:focus,
+    .directory-search-input-mobile:focus {
+        border: 4px solid #5EC2D0;
+        border-right: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .directory-search-arrow-back.focused,
+    .directory-search-arrow-forward.focused {
+        border-top: 4px solid #5EC2D0 !important;
+        border-bottom: 4px solid #5EC2D0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .directory-search-arrow-forward.focused {
+        border-right: 4px solid #5EC2D0;
+        transition: all 0.3s ease-in-out;
+    }
+}

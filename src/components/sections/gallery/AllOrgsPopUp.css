@@ -1,0 +1,38 @@
+.all-orgs-popup-wrapper {
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding-top: 24px;
+    padding-bottom: 60px;
+}
+
+.orgs-grid {
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Mobile: 2 columns */
+    gap: 16px;
+    row-gap: 32px;
+    justify-items: center;
+    align-items: center;
+    max-height: 85vh;
+    overflow-y: scroll;
+}
+
+.orgs-grid-item {
+    font-size: 32px;
+    height: 100%;
+    text-align: center;
+}
+
+@media (min-width: 1000px) {
+    .orgs-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 32px;
+        /* Desktop: 6 columns */
+    }
+}

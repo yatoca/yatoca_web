@@ -1,0 +1,815 @@
+.book-url {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.home-section-wrapper {
+    background-color: #E53016;
+    height: calc(100vh - 109px);
+}
+
+.home-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.home-section-phrase-title {
+    margin-right: 32px;
+}
+
+.link {
+    text-decoration: none;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #000000;
+    color: #000000;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 117px;
+    max-width: 1512px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-section-wrapper {
+    background-color: #d9d9d9;
+}
+
+.services-section {
+    margin-top: 97px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: row;
+    width: 100%;
+    height: 100%;
+    color: white;
+    max-width: 1512px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sideOne {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.sideTwo {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.social-studies {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.cult-change {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+.aud-compr {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.prop-activ {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+.projects {
+    grid-area: 2 / 6 / 3 / 7;
+}
+
+.com-str-des {
+    grid-area: 3 / 3 / 4 / 4;
+}
+
+.collabs {
+    grid-area: 3 / 5 / 4 / 6;
+}
+
+.soc-str-des {
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+.social-studies,
+.cult-change,
+.aud-compr,
+.prop-activ,
+.projects,
+.com-str-des,
+.collabs,
+.soc-str-des {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.social-studies:hover,
+.cult-change:hover,
+.aud-compr:hover,
+.prop-activ:hover,
+.projects:hover,
+.com-str-des:hover,
+.collabs:hover,
+.soc-str-des:hover {
+    background-color: #ff1f33;
+}
+
+.social-studies:hover .txt-ctr,
+.cult-change:hover .txt-ctr,
+.aud-compr:hover .txt-ctr,
+.prop-activ:hover .txt-ctr,
+.projects:hover .txt-ctr,
+.com-str-des:hover .txt-ctr,
+.collabs:hover .txt-ctr,
+.soc-str-des:hover .txt-ctr {
+    transition: all 0.5s;
+    display: none;
+}
+
+.social-studies:not(:hover) .txt-ctr-hover-up,
+.social-studies:not(:hover) .txt-ctr-hover-down,
+.cult-change:not(:hover) .txt-ctr-hover-up,
+.cult-change:not(:hover) .txt-ctr-hover-down,
+.aud-compr:not(:hover) .txt-ctr-hover-up,
+.aud-compr:not(:hover) .txt-ctr-hover-down,
+.prop-activ:not(:hover) .txt-ctr-hover-up,
+.prop-activ:not(:hover) .txt-ctr-hover-down,
+.projects:not(:hover) .txt-ctr-hover-up,
+.projects:not(:hover) .txt-ctr-hover-down,
+.com-str-des:not(:hover) .txt-ctr-hover-up,
+.com-str-des:not(:hover) .txt-ctr-hover-down,
+.collabs:not(:hover) .txt-ctr-hover-up,
+.collabs:not(:hover) .txt-ctr-hover-down,
+.soc-str-des:not(:hover) .txt-ctr-hover-up,
+.soc-str-des:not(:hover) .txt-ctr-hover-down {
+    transition: all 0.5s;
+    display: none;
+}
+
+.team-section {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.team-member {
+    background-color: #000000;
+    flex: 1;
+}
+
+.team-member-pic {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.team-member-name,
+.team-member-description,
+.team-member-short-description {
+    color: white;
+}
+
+.team-member-description,
+.team-member-short-description {
+    font-size: 16px;
+}
+
+.team-member-name {
+    margin-bottom: 32px;
+    font-size: 24px;
+}
+
+.see-more-btn {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid white;
+    width: fit-content;
+}
+
+.text-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 93px;
+    margin-bottom: 65px;
+    position: relative;
+}
+
+.text-section-left {
+    flex: 1;
+}
+
+.text-section-center {
+    flex: 0.5;
+}
+
+.text-section-right {
+    flex: 0.3;
+}
+
+.text-p {
+    flex: 4;
+}
+
+.home-section-phrase {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    color: white;
+    flex: 5;
+}
+
+.home-section-phrase-link {
+    padding-bottom: 1px;
+    border-bottom: 1px solid white;
+}
+
+.logo-toronja {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.text-title {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000000;
+    font-family: "Graphico-Black", sans-serif;
+    flex: 1.3;
+}
+
+.text-section-border {
+    width: 100%;
+    position: absolute;
+}
+
+.slider-dots {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    align-self: flex-end;
+}
+
+.slider-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background: #d9d9d9;
+    border-radius: 30px;
+    margin-left: 3.5px;
+    margin-right: 3.5px;
+    cursor: pointer;
+}
+
+.slider-dot.swiper-slide-thumb-active {
+    background: #656565;
+}
+
+.text-p {
+    font-weight: 400;
+    color: #000000;
+    width: 100%;
+}
+
+.redirect-btn {
+    margin-top: 36px;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+    text-transform: uppercase;
+    color: #bdbdbd;
+    border-bottom: 1px solid #BDBDBD;
+    width: fit-content;
+    cursor: pointer;
+}
+
+@media (min-width: 0px) and (max-width: 1440px) {
+    .book-url {
+        min-width: -webkit-fill-available;
+        min-height: 420px;
+    }
+
+    /* .services-section {
+        font-size: 18px;
+    } */
+    .home-section {
+        gap: 24px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .home-section {
+        gap: 32px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .text-p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000000;
+    }
+
+    .home-section {
+        gap: 32px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    .home-section-wrapper {
+        display: none;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+    .services-section-wrapper {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .slider-dots {
+        align-self: center;
+    }
+
+    .services-section {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-top: 80px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+            "social-studies aud-compr"
+            "soc-str-des com-str-des"
+            "cult-change prop-activ"
+            "collabs projects";
+    }
+
+    .social-studies {
+        grid-area: social-studies;
+    }
+
+    .cult-change {
+        grid-area: cult-change;
+    }
+
+    .aud-compr {
+        grid-area: aud-compr;
+    }
+
+    .prop-activ {
+        grid-area: prop-activ;
+    }
+
+    .projects {
+        grid-area: projects;
+    }
+
+    .com-str-des {
+        grid-area: com-str-des;
+    }
+
+    .collabs {
+        grid-area: collabs;
+    }
+
+    .soc-str-des {
+        grid-area: soc-str-des;
+    }
+
+    .text-section {
+        flex-direction: column;
+        align-items: start;
+        margin-top: 60px;
+        margin-bottom: 65px;
+        gap: 40px;
+    }
+
+    .text-section-left,
+    .text-section-center,
+    .text-section-right {
+        display: none;
+    }
+
+    .text-p {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .text-title {
+        font-size: 48px;
+        line-height: 85px;
+        margin-left: 29px;
+    }
+
+    .text-section-border {
+        border: 4px solid #ff1f33;
+        height: 176px;
+        top: 35px;
+    }
+
+    .team-section {
+        margin-top: 75px;
+        margin-bottom: 68px;
+    }
+
+    .team-container {
+        overflow-x: scroll;
+        gap: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-top: 75px;
+    }
+
+    .team-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .team-member {
+        min-width: 88%;
+    }
+
+    .team-member-pic {
+        height: 100vw;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 390px) {
+    .team-member-name {
+        min-height: 54px;
+        max-height: 54px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 375px) {
+    .textBookDescription {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 43px;
+    }
+
+    .logo-toronja {
+        justify-content: center;
+    }
+
+    .book-container {
+        flex-direction: column;
+    }
+
+    .services-section {
+        gap: 16px;
+    }
+
+    .team-member-short-description {
+        min-height: 92px;
+        max-height: 92px;
+    }
+}
+
+@media (min-width: 354px) {
+    .team-member-short-description {
+        min-height: 111px;
+        max-height: 111px;
+    }
+}
+
+@media (min-width: 375px) {
+    .textBookDescription {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 43px;
+    }
+
+    .logo-toronja {
+        justify-content: center;
+    }
+
+    .book-container {
+        flex-direction: column;
+    }
+
+    .services-section {
+        gap: 16px;
+    }
+
+    .team-member-short-description {
+        min-height: 92px;
+        max-height: 92px;
+    }
+}
+
+@media (min-width: 600px) {
+    .book-url {
+        min-width: 367px;
+        min-height: 466px;
+    }
+
+    .textBookDescription {
+        min-width: 277px;
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 0px;
+    }
+
+    .logo-toronja {
+        justify-content: center;
+        margin-left: 0%;
+    }
+
+    .book-container {
+        min-width: 704px;
+        flex-direction: row;
+    }
+
+    .services-section {
+        margin-top: 97px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-columns: 1fr;
+        gap: 0px 0px;
+        overflow: scroll;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .social-studies,
+    .cult-change,
+    .aud-compr,
+    .prop-activ,
+    .projects,
+    .com-str-des,
+    .collabs,
+    .soc-str-des {
+        min-width: 232px;
+        max-width: 232px;
+    }
+
+    .services-section-wrapper {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .slider-dots {
+        align-self: center;
+        margin-top: 40px;
+    }
+
+    .text-section {
+        flex-direction: column;
+        margin-top: 155px;
+        margin-bottom: 155px;
+        margin-left: 29px;
+    }
+
+    .text-section-left,
+    .text-section-center,
+    .text-section-right {
+        display: none;
+    }
+
+    .text-title {
+        font-size: 96px;
+        line-height: 135px;
+    }
+
+    .text-p {
+        font-size: 24px;
+        line-height: 27px;
+        padding-top: 60px;
+    }
+
+    .text-section-border {
+        border: 10px solid #ff1f33;
+        height: 263px;
+        top: 60px;
+    }
+
+    .team-container {
+        padding-left: 24px;
+        padding-right: 24px;
+        gap: 32px;
+        overflow-x: scroll;
+    }
+
+    .team-member {
+        min-width: 59%;
+    }
+
+    .team-member-short-description {
+        min-height: 92px;
+        max-height: 92px;
+    }
+
+    .team-member-pic {
+        height: 70vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .team-member-short-description {
+        min-height: 57px;
+        max-height: 57px;
+    }
+    .home-section-video {
+        background-image: url('../../assets/images/gif_home.gif');
+        background-position: unset;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: calc(100vh - 109px);
+        flex: 6;
+    }
+    /* .home-section-video {
+        height: calc(100vh - 109px);
+        flex: 6;
+        object-fit: cover;
+        background-color: #656565;
+    } */
+    .home-section-phrase-title {
+        font-size: 36px;
+        line-height: 100%;
+        margin-bottom: 16px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .textBookDescription {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 0px;
+    }
+
+    .book-container {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1280px) {
+    .home-section-phrase-title {
+        font-size: 48px;
+        line-height: 100%;
+        margin-bottom: 16px;
+    }
+    .textBookDescription {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 0px;
+    }
+
+    .logo-toronja {
+        margin-left: 0%;
+    }
+
+    .book-container {
+        flex-direction: row;
+    }
+
+    .social-studies,
+    .cult-change,
+    .aud-compr,
+    .prop-activ,
+    .projects,
+    .com-str-des,
+    .collabs,
+    .soc-str-des {
+        min-width: unset;
+        max-width: unset;
+    }
+
+    .services-section-wrapper {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .services-section {
+        margin-top: 97px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-columns: 1fr;
+    }
+
+    .slider-dots {
+        align-self: flex-end;
+        margin-top: 0;
+    }
+
+    .text-section {
+        flex-direction: row;
+        margin-bottom: 65px;
+        margin-top: 78px;
+    }
+
+    .text-title {
+        font-size: 120px;
+        line-height: 160px;
+        flex: 5;
+    }
+
+    .text-p {
+        padding-top: 0px;
+        font-size: 40px;
+        line-height: 45px;
+        margin-bottom: 19px;
+    }
+
+    .text-section-left {
+        display: flex;
+    }
+
+    .text-section-center {
+        display: flex;
+    }
+
+    .text-section-right {
+        display: flex;
+    }
+
+    /* .redirect-btn {
+        position: absolute;
+        z-index: 10;
+    } */
+    .text-section-border {
+        border: 10px solid #ff1f33;
+        height: 335px;
+    }
+
+    .team-member {
+        min-width: unset;
+    }
+
+    .team-member-pic {
+        height: 40vw;
+        background-size: cover;
+    }
+
+    .team-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .team-member-short-description {
+        min-height: 57px;
+        max-height: 57px;
+    }
+
+    .team-section {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .textBookDescription {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 0px;
+    }
+
+    .book-container {
+        flex-direction: row;
+    }
+
+    .services-section {
+        margin-top: 97px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-columns: 1fr;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .text-section {
+        flex-direction: row;
+    }
+
+    .team-container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .team-member-short-description {
+        min-height: 57px;
+        max-height: 57px;
+    }
+}
