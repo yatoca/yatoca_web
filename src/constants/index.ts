@@ -362,9 +362,9 @@ export const photos_festivals = [
 export const logos_black = [
   '/media/footer_black/Studio92.png',
   '/media/footer_black/Corazo%CC%81n.png',
-  '/media/footer_black/La+Zona.png',
+  '/media/footer_black/La-Zona.png',
   '/media/footer_black/Cara.png',
-  '/media/footer_black/Patria+C.png',
+  '/media/footer_black/Patria-C.png',
   '/media/footer_black/Recambio.png',
   '/media/footer_black/Oranch.png',
   '/media/footer_black/Invisible.png',
@@ -397,9 +397,9 @@ export const logos_black = [
 export const logos_white = [
   '/media/footer_white/Studio92.png',
   '/media/footer_white/Corazo%CC%81n.png',
-  '/media/footer_white/La+Zona.png',
+  '/media/footer_white/La-Zona.png',
   '/media/footer_white/Cara.png',
-  '/media/footer_white/Patria+C.png',
+  '/media/footer_white/Patria-C.png',
   '/media/footer_white/Recambio.png',
   '/media/footer_white/Oranch.png',
   '/media/footer_white/Invisible.png',
