@@ -304,8 +304,8 @@ const Talk: React.FC = () => {
                     <div className="talk-p3-title thunder-fw-lc uppercase">Lo que la gente dice...</div>
                     {responses
                       .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
-                      .map((response) => (
-                        <div key={response.id} className="talk-p3-response">{capitalize_first_letter(response.response)}</div>
+                      .map((response, index) => (
+                        <div key={index} className="talk-p3-response">{capitalize_first_letter(response.response)}</div>
                       ))}
                   </div>
                 </div>
