@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ZONE_ID="${ZONE_ID:-Z0628504M3ENTXTEYAYA}"
+cat >&2 <<'MSG'
+ERROR: scripts/stage-dns.sh is deprecated and intentionally disabled.
 
-aws route53 change-resource-record-sets \
-  --hosted-zone-id "$ZONE_ID" \
-  --change-batch file://infrastructure/dns-current-records.json
+Route 53 became authoritative and the Yatoca website was cut over to CloudFront
+on 2026-09-12. The old staging change set pointed the website to DigitalOcean
+and must not be reapplied.
 
-echo
-printf '%s\n' "Route 53 has been pre-staged only. Registrar nameservers were NOT changed."
-printf '%s\n' "Current production DNS remains authoritative until you explicitly change delegation at the registrar."
+See:
+  docs/AWS_PRODUCTION_ARCHITECTURE.md
+  infrastructure/dns-production-reference.json
+  infrastructure/terraform/
+MSG
+exit 1

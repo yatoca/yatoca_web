@@ -1,0 +1,41 @@
+{
+  "Comment": "REFERENCE ONLY: production DNS after AWS cutover on 2026-09-12.",
+  "Website": {
+    "ApexA": "Route53 Alias -> dp6hdjg6u5zsm.cloudfront.net.",
+    "ApexAAAA": "Route53 Alias -> dp6hdjg6u5zsm.cloudfront.net.",
+    "WwwA": "Route53 Alias -> dp6hdjg6u5zsm.cloudfront.net.",
+    "WwwAAAA": "Route53 Alias -> dp6hdjg6u5zsm.cloudfront.net."
+  },
+  "CloudFrontAliasHostedZoneId": "Z2FDTNDATAQYW2",
+  "ACMValidation": [
+    {
+      "Name": "_0fbd71745b556bad9450212a45f6522e.yatoca.pe.",
+      "Type": "CNAME",
+      "Value": "_27011623271aabf688fc223add91017e.wzccmgtwzk.acm-validations.aws."
+    },
+    {
+      "Name": "_18171ff56808f3344e2881336290a1b4.www.yatoca.pe.",
+      "Type": "CNAME",
+      "Value": "_78fa80a094c4e508a4d58b606695aed9.wzccmgtwzk.acm-validations.aws."
+    }
+  ],
+  "MailRecords": {
+    "MX": [
+      "1 aspmx.l.google.com.",
+      "3 alt2.aspmx.l.google.com.",
+      "5 alt1.aspmx.l.google.com.",
+      "8 alt3.aspmx.l.google.com.",
+      "8 alt4.aspmx.l.google.com."
+    ],
+    "TXT": [
+      "google-site-verification=iSQT41lsnYz-EALupDo9IJaspvaTSF7kd7wQEQm2gtk",
+      "T4409132",
+      "v=spf1 include:secureserver.net -all"
+    ],
+    "DMARC": "v=DMARC1; p=quarantine; rua=mailto:postmaster@yatoca.pe; pct=100",
+    "k2._domainkey": "dkim2.mcsv.net.",
+    "k3._domainkey": "dkim3.mcsv.net.",
+    "s1._domainkey": "s1.domainkey.titan.email.",
+    "s2._domainkey": "s2.domainkey.titan.email."
+  }
+}

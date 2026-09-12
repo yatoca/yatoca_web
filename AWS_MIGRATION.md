@@ -1,48 +1,62 @@
-# Yatoca AWS migration
+# Yatoca AWS migration — COMPLETE
 
-Target architecture:
+Production cutover completed on **2026-09-12**.
 
-- CodeCommit: source repository
-- S3: private static Next.js export
-- CloudFront: public CDN / HTTPS entry point
-- API Gateway HTTP API: `/api/*`
-- Lambda: feedback API
-- DynamoDB: `yatoca-feedback`
-- Route 53: authoritative DNS after a controlled cutover
-- ACM (`us-east-1`): certificate for `yatoca.pe` and `www.yatoca.pe`
+The live architecture is now:
 
-## Existing resources
+```text
+Route 53 -> CloudFront
+              |-- private S3 static site
+              |-- /media/* -> private S3 assets
+              `-- /api/* -> API Gateway -> Lambda -> DynamoDB
+```
 
-The DynamoDB table `yatoca-feedback` and Route 53 hosted zone for `yatoca.pe` were created manually before this template. This stack intentionally references the DynamoDB table and does **not** mutate Route 53. DNS cutover is kept separate to minimize outage risk.
+Production domains:
 
-## DigitalOcean Spaces TODO
+- `https://yatoca.pe`
+- `https://www.yatoca.pe`
 
-The application still references `https://ya-toca-web-imgs.nyc3.cdn.digitaloceanspaces.com/...`.
+The website no longer uses PostgreSQL in the production request path.
 
-Do not delete that Space until those objects are copied to AWS and all references are updated. Migration is intentionally deferred because Spaces access keys are not currently available.
+## Current infrastructure source
 
-## Initial deployment
+The running application stack remains managed by CloudFormation/SAM in:
 
-Prerequisites: AWS CLI and Node/npm. The infrastructure deployment uses AWS CLI + CloudFormation/SAM transform; a separate SAM CLI installation is not required.
+```text
+infrastructure/template.yaml
+```
+
+Portable new-account reconstruction is documented and implemented in:
+
+```text
+docs/AWS_PRODUCTION_ARCHITECTURE.md
+docs/NEW_AWS_ACCOUNT_RECOVERY.md
+docs/DIGITALOCEAN_DECOMMISSION.md
+infrastructure/terraform/
+```
+
+## Normal web deployment
 
 ```bash
-export AWS_REGION=us-east-1
-./scripts/deploy-infra.sh
 ./scripts/deploy-web.sh
 ```
 
-The first deployment uses the default `*.cloudfront.net` hostname and does not require the production DNS or certificate.
+## Infrastructure deployment safety
 
-## Production-domain cutover
+Production CloudFront now requires the issued ACM certificate. `scripts/deploy-infra.sh` automatically discovers the issued `yatoca.pe` certificate when `CERTIFICATE_ARN` is not explicitly provided and refuses deployment if it cannot find one.
 
-1. Copy the currently authoritative DigitalOcean DNS records to Route 53 first.
-2. Keep the old website records pointing to DigitalOcean while nameservers are changed.
-3. Request ACM certificate in `us-east-1` for `yatoca.pe` and `www.yatoca.pe`.
-4. Add ACM validation records to Route 53 (and, if validation is needed before delegation, also add the validation CNAME to the currently authoritative DNS provider).
-5. Change registrar nameservers to the Route 53 delegation set only after all DNS records are verified.
-6. Wait for ACM to become `ISSUED`.
-7. Redeploy infrastructure with `CERTIFICATE_ARN=<arn>` so CloudFront accepts `yatoca.pe` and `www.yatoca.pe`.
-8. Change only the website A/AAAA/WWW records in Route 53 to CloudFront aliases.
-9. Verify web and mail before deleting DigitalOcean DNS/resources.
+This prevents an accidental redeploy from removing the production aliases/certificate.
 
-Never "clean up" mail-related DNS during the cutover. Cleanup is a separate post-migration task.
+## DNS
+
+Route 53 is authoritative. The pre-cutover DigitalOcean DNS staging script has been disabled intentionally.
+
+Never rerun the old pre-cutover DNS change set. It pointed the website back to DigitalOcean.
+
+## Historical data
+
+Historical PostgreSQL data is archived separately in database/CSV backups. It is **not** imported into DynamoDB. DynamoDB stores new website feedback after the AWS cutover.
+
+## Security
+
+A DigitalOcean Spaces credential used during migration was exposed. Revoke/delete it. Do not reuse it or include it in any archive.

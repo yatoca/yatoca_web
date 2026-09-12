@@ -1,0 +1,20 @@
+# New-account bootstrap / disaster recovery defaults.
+aws_region          = "us-east-1"
+codecommit_region   = "us-east-2"
+project_name        = "yatoca"
+domain_name         = "yatoca.pe"
+feedback_table_name = "yatoca-feedback"
+
+# Phase 1: both false.
+# After ACM is ISSUED, set attach_custom_certificate=true and apply.
+# In a cross-account move, keep enable_custom_domain=false until the aliases
+# have been transferred/released from the old CloudFront distribution.
+attach_custom_certificate = false
+enable_custom_domain       = false
+
+# New-account recovery normally creates a fresh Route 53 hosted zone.
+create_hosted_zone = true
+
+# Optional source repository creation. Keep false unless the target AWS account
+# supports CodeCommit and you specifically want a new empty repository.
+enable_codecommit = false
