@@ -1,0 +1,123 @@
+{
+  "Comment": "Pre-stage current yatoca.pe DNS records in Route 53. This does NOT change registrar nameservers.",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "yatoca.pe.",
+        "Type": "A",
+        "TTL": 30,
+        "ResourceRecords": [
+          { "Value": "162.159.140.98" },
+          { "Value": "172.66.0.96" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "yatoca.pe.",
+        "Type": "AAAA",
+        "TTL": 30,
+        "ResourceRecords": [
+          { "Value": "2606:4700:7::60" },
+          { "Value": "2a06:98c1:58::60" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "www.yatoca.pe.",
+        "Type": "CNAME",
+        "TTL": 1800,
+        "ResourceRecords": [
+          { "Value": "ya-toca-visual-feed-rfl3s.ondigitalocean.app." }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "yatoca.pe.",
+        "Type": "MX",
+        "TTL": 14400,
+        "ResourceRecords": [
+          { "Value": "1 aspmx.l.google.com." },
+          { "Value": "3 alt2.aspmx.l.google.com." },
+          { "Value": "5 alt1.aspmx.l.google.com." },
+          { "Value": "8 alt3.aspmx.l.google.com." },
+          { "Value": "8 alt4.aspmx.l.google.com." }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "yatoca.pe.",
+        "Type": "TXT",
+        "TTL": 3600,
+        "ResourceRecords": [
+          { "Value": "\"google-site-verification=iSQT41lsnYz-EALupDo9IJaspvaTSF7kd7wQEQm2gtk\"" },
+          { "Value": "\"T4409132\"" },
+          { "Value": "\"v=spf1 include:secureserver.net -all\"" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_dmarc.yatoca.pe.",
+        "Type": "TXT",
+        "TTL": 3600,
+        "ResourceRecords": [
+          { "Value": "\"v=DMARC1; p=quarantine; rua=mailto:postmaster@yatoca.pe; pct=100\"" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "k2._domainkey.yatoca.pe.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          { "Value": "dkim2.mcsv.net." }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "k3._domainkey.yatoca.pe.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          { "Value": "dkim3.mcsv.net." }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "s1._domainkey.yatoca.pe.",
+        "Type": "CNAME",
+        "TTL": 43200,
+        "ResourceRecords": [
+          { "Value": "s1.domainkey.titan.email." }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "s2._domainkey.yatoca.pe.",
+        "Type": "CNAME",
+        "TTL": 43200,
+        "ResourceRecords": [
+          { "Value": "s2.domainkey.titan.email." }
+        ]
+      }
+    }
+  ]
+}

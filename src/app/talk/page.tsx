@@ -77,6 +77,9 @@ const Talk: React.FC = () => {
           "Content-Type": "application/json",
         },
       })
+      if (!response.ok) {
+        throw new Error(`Error loading opinions: ${response.status}`);
+      }
       const data = await response.json();
       setResponses(data.data.map((item: { comentario: string, fecha: string }) => {
         return {
@@ -107,6 +110,9 @@ const Talk: React.FC = () => {
           },
           body: JSON.stringify({ message: response }),
         })
+        if (!res.ok) {
+          throw new Error(`Error saving opinion: ${res.status}`);
+        }
         const fecha = new Date();
         setLoadingPost(false);
         setResponses((prev) => [{ id: fecha.toISOString(), response, timestamp: fecha }, ...prev])
@@ -137,7 +143,10 @@ const Talk: React.FC = () => {
         body: JSON.stringify({ [fieldName]: value, age_group: age_group }),
       });
 
-      console.log(await response.json());
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result?.error || `Error saving question: ${response.status}`);
+      }
 
       setQuestions(prev => ({ ...prev, [type]: '' }));
       setAges(prev => ({ ...prev, [type]: '' }));
@@ -172,15 +181,9 @@ const Talk: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      fetchData(); // your function to fetch responses
-    }, 10000); // 10,000 ms = 10 seconds
-
-    // Fetch immediately on mount
+    // Load once on mount. A successful POST is inserted locally, so continuous
+    // polling is unnecessary and would generate avoidable serverless requests.
     fetchData();
-
-    // Cleanup interval on unmount
-    return () => clearInterval(interval);
   }, []);
   return (
     <>
